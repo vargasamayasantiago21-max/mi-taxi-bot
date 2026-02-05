@@ -1,5 +1,12 @@
 import logging
 import os
+def main():
+    token = os.getenv("TOKEN")
+    if not token:
+        print("ERROR: TOKEN no configurado")
+        return
+
+application = Application.builder().token(token).build()
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import (
     Application,
