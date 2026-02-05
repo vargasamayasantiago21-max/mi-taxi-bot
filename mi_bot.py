@@ -64,7 +64,7 @@ async def tipo_servicio(update: Update, context: ContextTypes.DEFAULT_TYPE):
     context.user_data["servicio"] = servicio
 
     await update.message.reply_text(
-        "Puedes usar /cancel para cancelar en cualquier momento."
+        "Puedes escribir /cancel para cancelar en cualquier momento."
     )
 
     if servicio == "taxi":
