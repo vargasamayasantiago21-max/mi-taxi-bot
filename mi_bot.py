@@ -1,4 +1,5 @@
 import logging
+import os
 from telegram import Update, ReplyKeyboardMarkup, ReplyKeyboardRemove
 from telegram.ext import (
     Application,
@@ -145,9 +146,11 @@ async def cancel(update: Update, context: ContextTypes.DEFAULT_TYPE):
 # ---------- MAIN ----------
 def main():
     # CAMBIA ESTE TOKEN POR UNO NUEVO DE BOTFATHER
-    application = Application.builder().token(
-        "8036865946:AAGT1rlFaag6L-KmNpgm575MLJDdOU2GaMA"
-    ).build()
+    token = os.getenv("TOKEN")
+    if not token:
+        print ("ERROR: TOKEN no encontrado")
+        exit(1)
+    application = application.builder().token(token).build()
 
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler("start", start)],
